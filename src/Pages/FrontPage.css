@@ -1,28 +1,3 @@
-/* TODO: Tengo puesto aquí el background en fixed y al hacer scroll de la página, la página se rompe
-debo editar esta imagen y hacerla blurr para subirla así automáticamente, es eso o buscar una forma de arreglarlo */
-.frontContentExpositor::before {
-    content: "";
-    position: fixed;
-    left: 0;
-    right: 0;
-    z-index: -1;
-    
-
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 1)), 
-        url("../imgBank/pexels-simon-berger-1323550.jpg");
-    width: 100%;
-    height: 700px;
-  
-    background-size: cover;
-    background-position: bottom;
-
-    -webkit-filter: blur(3px);
-    -moz-filter: blur(3px);
-    -o-filter: blur(3px);
-    -ms-filter: blur(3px);
-    filter: blur(3px);
-
-}
 
 .frontContentExpositor {
 
@@ -31,6 +6,13 @@ debo editar esta imagen y hacerla blurr para subirla así automáticamente, es e
     justify-content: center;
     align-items: center;
 
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.6) 5%, rgba(255, 255, 255, 1)),  
+    url("../imgBank/pexels-monica-turlui-7137422.jpg"); 
+    width: 100%;
+
+    background-size: cover;
+    background-position: center;
+    backdrop-filter: blur(10px);
 
 }
 
@@ -39,15 +21,16 @@ debo editar esta imagen y hacerla blurr para subirla así automáticamente, es e
     width: 550px;
     height: 550px;
     border-radius: 15px;
-    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-lvPCuHtqwBK8LmMl8y65BYM3BRwuUxffXQ&usqp=CAU');
+    background-image: url('../imgBank/pexels-monica-turlui-7137422.jpg');
     background-size: cover;
     background-position: center;
     margin-right: 2em;
-  
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.418);;
 }
 
 .frontExpositorText {
- 
+ font-weight: lighter ;
+
 }
 
 .frontExpositorButtonArea {
@@ -75,4 +58,38 @@ debo editar esta imagen y hacerla blurr para subirla así automáticamente, es e
 .titleContainer {
     display: flex;
     justify-content: center;
+}
+
+[class^="carouselController"] {
+    width: 80%;
+    justify-content: center;
+  
+}
+
+[class^="banner"] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+[class^="banner3"] {
+    color: white;
+}
+
+.frontContainerBanner3 {
+
+    background-color: #000000;
+    padding: 3em;
+    margin: 1em 0em;
+
+}
+
+/* CAROUSEL REACT */
+
+/* .carousel-container {
+    margin-bottom: 5000px;
+} */
+
+.carousel-item {
+   margin-bottom: 50px;
 }

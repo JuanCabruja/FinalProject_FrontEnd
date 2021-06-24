@@ -11,7 +11,7 @@ export default function NavBar() {
             <div className="navContent">
 
                 <div className="navLogo" >
-                    <NavLink to='/' className="" activeClassName="logo"> <h1 className="">SAFFO</h1> </NavLink>
+                    <NavLink to='/' className="marker" activeClassName="marker"> <h1 className="marker">SAFFO</h1> </NavLink>
                 </div>
 
                 <form className="navFormSearch" onSubmit="">
@@ -19,9 +19,9 @@ export default function NavBar() {
                     <label className="form-label" for="form1" type='submit'> </label>
                 </form>
 
-                <NavLink to='/login' className='' activeClassName='active'>Marketplace</NavLink>
+                <NavLink to='/Marketplace' className='marker' activeClassName='active'>Marketplace</NavLink>
 
-                <NavLink to='/login' className='' activeClassName='active'>Login</NavLink>
+                <NavLink to='/login' className='marker' activeClassName='active'>Login</NavLink>
                 
             </div>
 
