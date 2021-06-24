@@ -1,11 +1,78 @@
+/* TODO: Tengo puesto aquí el background en fixed y al hacer scroll de la página, la página se rompe
+debo editar esta imagen y hacerla blurr para subirla así automáticamente, es eso o buscar una forma de arreglarlo */
+.frontContentExpositor::before {
+    content: "";
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    
+
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 1)), 
+        url("../imgBank/pexels-simon-berger-1323550.jpg");
+    width: 100%;
+    height: 700px;
+  
+    background-size: cover;
+    background-position: bottom;
+
+    -webkit-filter: blur(3px);
+    -moz-filter: blur(3px);
+    -o-filter: blur(3px);
+    -ms-filter: blur(3px);
+    filter: blur(3px);
+
+}
+
 .frontContentExpositor {
-     padding-top: 50px;
+
+    display: flex;
+    padding: 3vh;
+    justify-content: center;
+    align-items: center;
+
+
 }
 
 .frontExpositorCard {
   
-    width: 60px;
-    height: 50px;
-    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-lvPCuHtqwBK8LmMl8y65BYM3BRwuUxffXQ&usqp=CAU);
-    
+    width: 550px;
+    height: 550px;
+    border-radius: 15px;
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-lvPCuHtqwBK8LmMl8y65BYM3BRwuUxffXQ&usqp=CAU');
+    background-size: cover;
+    background-position: center;
+    margin-right: 2em;
+  
+}
+
+.frontExpositorText {
+ 
+}
+
+.frontExpositorButtonArea {
+    display: flex;
+    justify-content: baseline ;
+    padding-top: 2em;
+
+}
+
+.frontButton {
+    border: 1px solid black;
+    padding: 20px 0px;
+    display: flex;
+    justify-content: center;
+    width: 100px;
+    border-radius: 8px;
+    margin-right: 20px;
+    background-color: white;    
+}
+
+.frontButton:hover {
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.418);;
+}
+
+.titleContainer {
+    display: flex;
+    justify-content: center;
 }

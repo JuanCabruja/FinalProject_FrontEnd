@@ -1,5 +1,6 @@
 nav {
     margin: 0;
+    background-color: rgb(250, 250, 250);
 }
 .mainNav { 
 
@@ -38,7 +39,7 @@ nav {
     border-radius: 10px;
     border: 1px solid gray;
 
-    padding: 5px;
+    padding: 10px;
 
 }
 
