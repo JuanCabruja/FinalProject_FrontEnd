@@ -1,0 +1,56 @@
+nav {
+    margin: 0;
+}
+.mainNav { 
+
+    display: flex;  
+    width: 100%;
+    justify-content: space-around;
+    flex-flow: column ;
+    border-bottom: 1px ridge black;
+}
+
+.navContent {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px;
+}
+
+.navLinks {
+    display: flex;
+}
+
+.navSearchInput, .navFormSearch {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+
+}
+
+.navSearchInputStyle {
+
+    height: 50px;
+    width: 80%;
+    border-radius: 10px;
+    border: 1px solid gray;
+
+    padding: 5px;
+
+}
+
+.navSearchInputStyle:hover {
+
+  border-color: rgb(44, 0, 0);
+
+}
+
+/* Utilizo esta propiedad para hacer override a a:-webkit-any-link */
+/* TODO: Revisar con jesús porque tengo un problema aquí en el CSS con la clase :any-link que he tenido que hacer Override */
+:any-link { color: black }
+:any-link:hover { color: black;}
+
+
