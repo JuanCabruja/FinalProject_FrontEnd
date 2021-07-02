@@ -2,7 +2,7 @@
 function FrontPage() {
     return (
       <>
-      <h1> Esta página no existe</h1>
+      <h1> Parece que te has equivocado, esta página, al menos por ahora... No existe.</h1>
       </>
     );
   }

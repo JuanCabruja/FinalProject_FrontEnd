@@ -2,14 +2,18 @@ import './App.css';
 
 // Component Import
 import Footer from './Components/Footer';
+import Router from './router/Router';
 
-import RouterNavBar from './RouterNavBar';
+// Contexts
+import AuthContext from './contexts/AuthContext';
 
 function App() {
   return (
     <>
-    <RouterNavBar />
-    <Footer />
+    <AuthContext>
+      <Router />
+      <Footer />
+    </AuthContext>
     </>
   );
 }

@@ -1,8 +1,15 @@
-const PORT = "4000";
+const PORT = "3009";
 const BASE_API_URL = "http://localhost:" + PORT;
 
-const LOGIN_URL = BASE_API_URL + "/login";
+const LOGIN_URL = BASE_API_URL + "/login/";
+const USER_URL = BASE_API_URL + "/users/"
+const SESSION_URL = BASE_API_URL + '/session/';
+const COLLECTION_URL = BASE_API_URL + '/collection/'
 
 export {
-    LOGIN_URL
+    LOGIN_URL,
+    USER_URL,
+    SESSION_URL,
+    COLLECTION_URL,
+    
 }

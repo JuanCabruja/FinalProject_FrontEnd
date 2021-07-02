@@ -1,9 +1,20 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom';
+import React, { useState } from 'react'
+import { NavLink, useHistory } from 'react-router-dom';
+import { useAuthContext } from '../contexts/AuthContext';
+
 
 import './NavBar.css';
 
 export default function NavBar() {
+
+   const { isAuthenticated, loginUser, signOut, isCreator } = useAuthContext();
+   const history = useHistory();
+
+   const handleSignOut = () => {
+        signOut();
+        history.push("/");
+   }
+
     return (
 
         <nav className="mainNav ">
@@ -15,25 +26,25 @@ export default function NavBar() {
                 </div>
 
                 <form className="navFormSearch" onSubmit="">
-                    <input type="search" id="form1" className="navSearchInput navSearchInputStyle" placeholder="Busca tu prenda ideal ;)" onChange=""  />
+                    <input type="search" id="form1" className="navSearchInput navSearchInputStyle" placeholder="What are you looking for?" onChange=""  />
                     <label className="form-label" for="form1" type='submit'> </label>
                 </form>
 
-                <NavLink to='/Marketplace' className='marker' activeClassName='active'>Marketplace</NavLink>
+                <NavLink to='/market' className='marker' activeClassName='active'>Marketplace</NavLink>
 
-                <NavLink to='/login' className='marker' activeClassName='active'>Login</NavLink>
-                
+                { isAuthenticated ? <div><NavLink to={'/'+loginUser?.username} className='marker' activeClassName='active'>User Dashboard</NavLink> </div>
+                                  : <NavLink to='/login' className='marker' activeClassName='active'>Login</NavLink>  }   
+                                        
+                { isAuthenticated && isCreator() ? <NavLink to={'/'+loginUser?.username+'/upload'}>New Collection</NavLink>
+                                                 :   <></> }
+                                    
+                 { isAuthenticated  ? <div><input type="submit" onClick={handleSignOut} value="signout"></input></div>
+                                    : <></> }
+  
+
+
             </div>
 
-            {/* <table className="navLinks"> 
-                <td className="navLinks">
-                    <li>  <NavLink to='/AboutUs' className='' activeClassName=''>About Us</NavLink> </li>
-                    <li>  <NavLink to='/Ejercicio1' className='text-decoration-none  font-weight-bold' activeClassName='active'>Test 1</NavLink> </li>
-                    <li>  <NavLink to='/Ejercicio1' className='text-decoration-none  font-weight-bold' activeClassName='active'>Test 2</NavLink> </li>
-                    <li>  <NavLink to='/Ejercicio1' className='text-decoration-none  font-weight-bold' activeClassName='active'>Test 3</NavLink> </li>
-                </td>
-            </table> */}
          </nav>
-
     )
 }

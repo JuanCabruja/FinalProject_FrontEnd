@@ -1,68 +1,91 @@
-import React, { createContext, useContext, useState, useEffect } from 'react'
 
-const AuthContext = createContext({});
+import { createContext, useState, useContext, useEffect } from "react";
+import { SESSION_URL } from "../config/config";
 
-// Desestructuramos el objeto de pops porque solo queremos children
+const LoginContext = createContext(null);
 
-export default function AuthContextProvider({children}) {
-
-    // TODO: Crear estado para la info del usuario
-
-    // Crearemos una función que nos permitirá delegar la gestión
-    // de la autenticación a este contexto. localstorage.setItem(token, )
-
-    const [loggedInUser, setLoggedInUser] = useState({});
+export default function AuthContext({children}) {
+   
+    const [loginUser, setLoginUser] = useState({});
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
+  
     const getToken = () => localStorage.getItem("TOKEN_KEY");
+    const setToken = token => localStorage.setItem("TOKEN_KEY", token);
     const removeToken = () => localStorage.removeItem("TOKEN_KEY");
-    const setToken = token => {
-        localStorage.setItem("TOKEN_KEY", token)
-        console.log(token)
-    }
 
-    const logIn = (token, user) => {
-        // TODO: guardar el token
-        // TODO: actualice el estado loggedInUser
-        // TODO: actualice el estado isAuthenticaded (Booleano)
-        
+    const isAdmin = () => loginUser?.role === "ADMIN";
+
+    const isCreator = () => loginUser?.role === "CREATOR";
+
+    const signIn = (token, user) => {
+    
         setToken(token);
-        setLoggedInUser(user);
+        setLoginUser(user);
         setIsAuthenticated(true);
 
     }
 
-    const logOut = () => {
+    const signOut = () => {
+      
         removeToken();
-        setLoggedInUser({});
+        setLoginUser({});
         setIsAuthenticated(false);
+
+    }
+
+    const getAuthHeaders = (headers = {}) => {
+        
+        return {...headers, Authorization: `Bearer ${getToken()}`}
     };
 
-    // useEffect(() => {
-    //     const token = getToken();
-    //     token && logIn(token, user)    
-    // }, []);
+    useEffect(() => {
+        
+        const options = {
+            headers: getAuthHeaders()
+        };
+
+        // Si ni siquiera hay token guardado, no hacemos la petición
+        getToken() && fetch(SESSION_URL, options)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => signIn(data.token, data.user)) // Token e info renovada
+            .catch(() => signOut()); // Limpiamos la sesión
+        
+        // El siguiente comentario (eslint...) es para deshabilitar el warning de "missing dependencies"
+        // ya que no necesitamos incluir las dependencias que nos pide en este caso.
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, []);
 
     const contextValue = {
-       logIn,
-       logOut,
-       isAuthenticated,
+        loginUser,
+        isAuthenticated,
+        isAdmin,
+        getToken,
+        signIn,
+        signOut,
+        getAuthHeaders,
+        isCreator
     };
 
+    /**
+     * Envuelve a todos los hijos con el Provider del contexto, enviando 
+     * por value un objeto con todas las propiedades / funciones
+     * que se quieran exponer en el árbol.
+     */
+
     return (
-       <AuthContext.Provider value={contextValue} >
-           {children}
-       </AuthContext.Provider>
-    )
+        <LoginContext.Provider value={contextValue}>
+            {children}
+        </LoginContext.Provider>
+    );
 }
 
-// Custom hook para simplificar el uso de este contexto
+const useAuthContext = () => useContext(LoginContext);
 
-const useAuthContext = () => useContext(AuthContext);
-
-export {
-    useAuthContext
-}
-
-// a la hora de importar en el Login podremos utilizar el useAuthContext para simplificar
-// Los import, al usar useAuthContext utilizamos todo el contexto de AuthContext
+export {useAuthContext};

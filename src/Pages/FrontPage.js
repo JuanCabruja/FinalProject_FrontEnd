@@ -38,9 +38,10 @@ export default function FrontPage() {
           <h2> Artistas exclusivos en SAFFO</h2>
         </div>
         <div className="banner1Carousel">
+          
           {/* TODO: Para el carousel, tendré que hacer un punto de la API o un FETCH que pida CREATORS */}
             <div className="carouselController">
-              <Carousel swipeable={false} responsive={responsive} showDots={true} transitionDuration={1000} infinite={true} containerClass="carousel-container"
+              <Carousel swipeable={false} responsive={responsive} showDots={false} transitionDuration={1000} infinite={true} containerClass="carousel-container"
               itemClass="carousel-item"
               // draggable={false}
               // ssr={true} // means to render carousel on server-side.
@@ -72,7 +73,7 @@ export default function FrontPage() {
         <div className="banner1Carousel">
           {/* TODO: Para el carousel, tendré que hacer un punto de la API o un FETCH que pida CREATORS */}
             <div className="carouselController">
-              <Carousel swipeable={false} responsive={responsive} showDots={true} transitionDuration={1000} infinite={true} containerClass="carousel-container"
+              <Carousel swipeable={false} responsive={responsive} showDots={false} transitionDuration={1000} infinite={true} containerClass="carousel-container"
               itemClass="carousel-item"
               // draggable={false}
               // ssr={true} // means to render carousel on server-side.
@@ -97,8 +98,6 @@ export default function FrontPage() {
         </div>
 
       </div>
-
-
 
       <div className="frontContainerBanner3" >
 

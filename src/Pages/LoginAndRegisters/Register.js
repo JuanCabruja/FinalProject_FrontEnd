@@ -1,51 +1,71 @@
 import { useForm } from "../../Hooks/useForm";
-// import { AuthContext, useAuthContext } from "../../contexts/AuthContext"; 
+import { AuthContext, useAuthContext } from "../../contexts/AuthContext"; 
 import {useHistory} from "react-router-dom";
-import { LOGIN_URL } from "../../config/config";
+import { USER_URL } from "../../config/config";
+import { NavLink } from 'react-router-dom';
 
-const {logIn} = useAuthContext();
+import './Login.css';
 
-const history = useHistory();
+//TODO: Arreglar el css GRID del register para que salga bien
+ 
+export default function Register() {
 
-const formInitialState = {email: "", password:""};
-const [form, handleChange] = useForm(formInitialState);
+    const {signIn, loginUser} = useAuthContext();
 
-const handleSubmit = async e => {
-    e.preventDefault();
+    const history = useHistory();
+ 
+    const formInitialState = {email: "", password:""};
+    const [form, handleChange] = useForm(formInitialState);
+ 
+    const handleSubmit = async e => {
+        e.preventDefault();
 
-    // TODO: capturar credenciales y hacer POST al server
-    const options = {
-        method: "POST",
-        headers: {"Content-type": "application/json"},
-        body: JSON.stringify(form)
-    }
+
+        const options = {
+            method: "POST",
+            headers: {"Content-type": "application/json"},
+            body: JSON.stringify(form)
+        }
+
+        const response = await fetch(USER_URL, options);
+        const data = await response.json();
+        
+        if (response.status === 201) {
+            // signIn(data.token, data.user);
+            console.log(loginUser);
+            console.log(data.user)
+            console.log(data);
+            history.push("/login");
+            alert("¡Usuario creado! Pruébalo haciendo Login");
     
-    const response = await fetch(LOGIN_URL, options); //  Se puede utilizar fetch().then().then()
-    const data = await response.json();
+        } else {
+            // TODO: recuerda que te dejaste aquí esta frase y tendrás que hacer fetch al error.
+            alert("¡Aquí debería estar mostrando el error!")
+        }
+    };
+ 
 
-    console.log(data);
-    
-    if (response.status === 200) {
-        logIn(data.token, data.user);
-        history.push("/dashboard")
-    } else {
-        alert("Credenciales incorrectas")
-    }
-};
-
-function Register() {
     return (
-      <>
-         <div className="d-flex justify-content-center pt-5">
-            <form onSubmit={handleSubmit} className="form-group w-50 bg-dark p-5 rounded">
-                <input onChange={handleChange} name="email" type="email" className="form-control mb-3" placeholder="Introduce tu email" />
-                <input onChange={handleChange} name="password" type="password" className="form-control mb-3" placeholder="**********" />
-                <input onChange={handleChange} type="submit" value="Iniciar sesión" className="btn btn-success" />
-            </form>
+        <div className="logInSectionContainer">
+            <div className="logInSideLeftContainer">
+
+            </div>
+            <div className="logInSideRightContainer">
+                <div className="logInFormHandler">
+                    <h1 className="h1Style">Let's make a new account:</h1>
+                    <form onSubmit={handleSubmit} className="logInFormContainer ">
+                        <span className="formText">*Email:</span>
+                        <input onChange={handleChange} name="email" type="email" className="logInFormStyleEmail" placeholder="Introduce your email" />
+                        <span className="formText">*Your name:</span>
+                        <input onChange={handleChange} name="username" type="text" className="logInFormStylePassword" placeholder="Introduce your name" />
+                        <span className="formText">*Password:</span>
+                        <input onChange={handleChange} name="password" type="password" className="logInFormStylePassword" placeholder="**********" />
+                        <input onChange={handleChange} type="submit" value="Create new account" className="logInBtn" />                    
+                    </form>
+                    <div className="otherLogInActions">
+                    </div>
+                </div>
+            </div>
         </div>
-      </>
-    );
-  }
-  
-  export default Register;
-  
+    )
+}
