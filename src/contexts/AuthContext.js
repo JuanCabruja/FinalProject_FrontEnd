@@ -1,6 +1,6 @@
 
 import { createContext, useState, useContext, useEffect } from "react";
-import { SESSION_URL } from "../config/config";
+import { SESSION_URL, USER_URL } from "../config/config";
 
 const LoginContext = createContext(null);
 
@@ -39,6 +39,7 @@ export default function AuthContext({children}) {
         return {...headers, Authorization: `Bearer ${getToken()}`}
     };
 
+    
     useEffect(() => {
         
         const options = {
@@ -61,6 +62,28 @@ export default function AuthContext({children}) {
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
         }, []);
+    
+    //TODO: Pongo aquí este fetch para usar un contexto general
+
+    const [creators, setCreators] = useState([]);
+
+    // useEffect(() => {
+
+    //     fetch(USER_URL+"creators")
+    //         .then(response => response.json())
+    //         .then( data => setCreators(data.results));
+    //     return () => {
+    //     }
+    // }, [])
+
+    const getCreators = async () => {
+
+        const response = await fetch(USER_URL+"creators")
+        const creators = await response.json()
+        setCreators(creators.results)
+
+    }
+
 
     const contextValue = {
         loginUser,
@@ -70,7 +93,9 @@ export default function AuthContext({children}) {
         signIn,
         signOut,
         getAuthHeaders,
-        isCreator
+        isCreator,
+        //TODO: Dejo esto aquí relativo al fetch
+        creators
     };
 
     /**

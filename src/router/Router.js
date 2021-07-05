@@ -23,6 +23,8 @@ import UserProfile from '../Pages/UserPrivatePages/UserProfile';
 import PrivateRoute from '../controllers/PrivateRoute';
 import LoginRedirect from '../controllers/LoginRedirect';
 import CollectionUpload from '../Pages/UserPrivatePages/CollectionUpload';
+import ProductDetails from '../Pages/MarketProducts/ProductDetails';
+import CollectionDetails from '../Pages/MarketProducts/CollectionDetails';
 
 export default function Router() {
   return (
@@ -36,6 +38,8 @@ export default function Router() {
             <LoginRedirect path='/Login'><Login/></LoginRedirect>
             <Route path='/registration' component={Register} />
             <Route path='/passwordForgotten'component={passwordForgotten} />
+            <Route path='/products/:productId' component={ProductDetails} />
+            <Route path='/collections/:collectionId' component={CollectionDetails} />
             <PrivateRoute path='/config'>   </PrivateRoute>  
             <PrivateRoute path='/:username/upload'><CollectionUpload /></PrivateRoute>
             <Route path='/:username'><UserProfile /></Route>       

@@ -1,6 +1,8 @@
-import React from 'react'
+import {useState, useEffect} from 'react'
 import FrontCards from '../Components/FrontCards';
 import { responsive } from '../config/carousel_config';
+import { useAuthContext } from '../contexts/AuthContext';
+import { USER_URL } from '../config/config';
 
 import './FrontPage.css';
 
@@ -12,7 +14,27 @@ import "react-multi-carousel/lib/styles.css";
 
 
 
-export default function FrontPage() {
+export default  function FrontPage() {
+
+  // const { creators } = useAuthContext();
+
+  const [creators, setCreators] = useState([]);
+
+  const getCreators = async () => {
+
+    const response = await fetch(USER_URL+"creators")
+    const creators = await response.json()
+    setCreators(creators.results)
+
+  }
+  useEffect(() => {
+    getCreators();
+    return () => {
+    }
+  }, [])
+
+  console.log(creators);
+
   return (
     <>
       <div className=" ">
@@ -24,7 +46,7 @@ export default function FrontPage() {
 
           <div className="frontExpositorText ">
             <h1 className=" ">Crea, Vende. Compra, Apoya.</h1>
-            <div className=" ">Descubre moda hecha por artesanos y diseñadores locales e internacionales</div>
+            <div className=" ">Descubre moda hecha por diseñadores exclusivos locales e internacionales</div>
             <div className="frontExpositorButtonArea">
               <div className="frontButton">Explora</div>
               <div className="frontButton">Crea</div>
@@ -49,18 +71,9 @@ export default function FrontPage() {
               //  removeArrowOnDeviceType={["tablet", "mobile"]} customTransition="all .5"
               // deviceType={this.props.deviceType} dotListClass="custom-dot-list-style"
               >
-                <FrontCards />
-                <FrontCards />
-                <FrontCards />
-                <FrontCards />
-                <FrontCards />
-                <FrontCards />
-                <FrontCards />
-                <FrontCards />
-                <FrontCards />
-                <FrontCards />
-                <FrontCards />
-                <FrontCards />
+               {creators == [] ? <></>
+                               : creators.map(creator => <FrontCards avatar={creator.avatar} username={creator.username} />)}
+        
               </Carousel>
             </div>
         </div>

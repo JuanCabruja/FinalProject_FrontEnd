@@ -32,9 +32,7 @@ export default function Register() {
         
         if (response.status === 201) {
             // signIn(data.token, data.user);
-            console.log(loginUser);
-            console.log(data.user)
-            console.log(data);
+
             history.push("/login");
             alert("¡Usuario creado! Pruébalo haciendo Login");
     
