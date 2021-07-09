@@ -1,0 +1,158 @@
+.grid {
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-column-gap: auto;
+    /* grid-row-gap: 16px; */
+    grid-template-areas: "info carousel"
+                         "info carousel";
+    grid-template-rows: auto ;
+    grid-template-columns: 1fr ;
+  
+
+    width: 100%;
+    
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.192);
+
+
+    background-color: rgba(255, 255, 255, 0.747);
+    backdrop-filter: blur(50px); 
+
+    border-bottom: 3px solid black;
+}
+
+.collectionDetailsContainer {
+    height: 95vh;
+}
+
+.testerContainer {
+    
+}
+
+.collectionDetailSideRight {
+    
+    grid-area: carousel;
+   
+    margin: 0%;
+    height: 100%;
+    width: 100%;
+  
+}
+
+.collectionDetailsSideLeft {
+    /* grid-area: info;
+
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-column-gap: auto;
+    grid-row-gap: 16px; 
+    grid-template-areas: "avatar avatar author author"
+                         "avatar avatar author author"
+                         "description description description"
+                         "description description description";
+    grid-template-rows: auto auto auto;
+    grid-template-columns: 1fr ; */
+
+}
+/* 
+.avatar {
+    grid-area: avatar;
+}
+
+.author {
+    grid-area: author;
+}
+
+.description {
+
+    grid-area: description;
+} */
+
+/* AREA IZQUIERDA ZONA HEADER */
+
+[class^="displayer"] {
+    padding: 20px;
+}
+.displayerCollectionDetailsHeader {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
+
+.displayerCollectionHeaderInfo {
+  
+}
+
+.displayerCollectionDescription {
+    text-align: justify;
+
+    border-bottom: 1px solid black;
+}
+
+.displayerCollectionDetailsButtons {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.collectionDetailsContainer {
+    
+}
+.collection-carousel {
+   
+}
+
+.collection-carousel-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.detailsImgContainer {
+    margin: 15px;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.buyButton {
+    background-color: black;
+    text-decoration: none;
+    color: white;
+    padding: 15px;
+    padding-inline: 50px;
+    font-size: larger;
+    font-weight: bolder;
+    border-style: none;
+}
+
+
+.collectionLikeButton {
+
+    transition-property: transform;
+    transition-duration: 600ms;
+    
+    
+}
+
+.collectionLikeButton:hover {
+    transform: scale(1.2);
+}
+
+/* @media screen and (max-width: 479px) {
+    .grid {
+        grid-auto-columns: 1fr;
+        grid-column-gap: auto;
+        grid-template-areas: "carousel"
+                             "info";
+        grid-template-rows: auto ;
+        grid-template-columns: 1fr ; 
+        width: 100%;
+
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.192);
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.747);
+        backdrop-filter: blur(50px); 
+    }
+} */

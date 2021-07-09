@@ -6,6 +6,8 @@ import { NavLink } from 'react-router-dom';
 import { log } from "loglevel";
 import axios from "axios";
 import { useState } from "react";
+import DeleteUser from "../../Components/DeleteUser";
+
 
 export default function CollectionUpload() {
 
@@ -48,14 +50,18 @@ export default function CollectionUpload() {
     
     return (
         <div>
-            <div className="">
-                <form onSubmit={handleSubmit} className="logInFormContainer ">
+            <div className="form1">
+                <form onSubmit={handleAvatarSubmit} className="logInFormContainer ">
                     <input onChange={handleInputChange} name="username" type="text" className="logInFormStyleEmail" placeholder="collectionName"  />
                     <input onChange={handleInputChange} name="email" type="email" className="logInFormStylePassword" placeholder="collectionSupply" />
                     <input onChange={handleInputChange} name="description" type="text" className="logInFormStylePassword" placeholder="collectionPrice" />  
                     <input onChange={handleInputChange} type="submit" value="Push New Collection" className="logInBtn" />            
                 </form>
             </div> 
+
+
+
+            <DeleteUser loginUser={loginUser} token={token} />
         </div>
     )
 }

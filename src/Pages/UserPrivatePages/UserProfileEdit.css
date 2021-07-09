@@ -1,0 +1,64 @@
+.BackgroundForms {
+    display: flex;
+    justify-content: center;
+
+    background-color: black;
+}
+
+.ContainerForms {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(2px) !important;
+    width: 70%;
+
+    background-color:rgba(211, 204, 204, 0);
+    backdrop-filter: blur(5px);
+}
+
+[class^="form"] {
+
+    width: 70%;
+    border-radius: 10px;
+    margin: 25px;
+    padding: 15px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.formAvatar {
+  
+    background-color: rgba(255, 255, 255, 0.849);
+    backdrop-filter: blur(5px);
+
+}
+
+.formInfo {
+
+    background-color: rgba(255, 255, 255, 0.849);
+    backdrop-filter: blur(5px);
+
+}
+
+.formHandler {
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+.imgInput {
+    margin: 15px;
+}
+
+.textInput {
+    width: 100%;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+}

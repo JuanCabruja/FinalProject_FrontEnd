@@ -1,26 +1,45 @@
+
+
 nav {
     margin: 0;
-    background-color: rgb(250, 250, 250);
-}
-.mainNav { 
-
-    display: flex;  
+    background-color: rgb(255, 255, 255); 
     width: 100%;
-    justify-content: space-around;
-    flex-flow: column ;
-    border-bottom: 1px ridge black;
+    border-bottom: 1px ridge rgba(122, 122, 122, 0.664);
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 6fr 1fr;
+    grid-template-areas: "LOGO search button";
+
+    column-gap: 3vw;
+   
+    justify-content: center;
+    padding: 1vh;
+ 
 }
 
-.navContent {
+
+
+.navLogo {
+    grid-area: LOGO;
+}
+
+.navSearchInput {
+    grid-area: search;
+}
+
+
+.navButtonContainer {
+    grid-area: button;
     display: flex;
-    width: 100%;
-    justify-content: space-around;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    padding: 5px;
+    padding: 1px;
 }
-
 .navLinks {
     display: flex;
+
 }
 
 .navSearchInput, .navFormSearch {
@@ -28,26 +47,33 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 80%;
+    width: 100%;
 
 }
 
 .navSearchInputStyle {
 
-    height: 50px;
-    width: 80%;
-    border-radius: 10px;
-    border: 1px solid gray;
-
-    padding: 5px;
-   
+    height: 30px;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    padding: 3px;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.534);
 
 }
 
 .navSearchInputStyle:hover {
 
-  border-color: rgb(44, 0, 0);
+  
 
+}
+
+.saffoLogo {
+    font-family: 'Archivo Black', sans-serif, ;
+}
+
+.marker {
+    font-family: 'Roboto Mono', monospace, 'Montserrat', sans-serif;
 }
 
 .marker:hover {
@@ -62,4 +88,24 @@ nav {
 :any-link { color: black }
 :any-link:hover { color: black;}
 
+@media screen and (max-width: 375px) {
+    nav {
 
+        background-color: rgb(255, 255, 255); 
+        width: 100%;
+        border-bottom: 1px ridge black;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: 1fr 6fr;
+        grid-template-areas: "LOGO search"
+                            "button button";
+    
+        column-gap: 3vw;
+        row-gap: 2vh;
+       
+        justify-content: center;
+        padding: 1vh;
+     
+    }
+}

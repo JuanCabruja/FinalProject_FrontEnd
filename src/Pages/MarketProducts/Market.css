@@ -1,0 +1,25 @@
+.marketContainer {
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to top, rgba(253, 253, 253, 0) 5%, rgba(255, 255, 255, 1)); 
+    background-size: auto;
+    background-position: center;
+    padding: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* TODO: Revisar CSS GRID  */
+.articleContainer{
+    width: 80%;
+
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    grid-template-rows: repeat(3, auto);
+
+    justify-content: center;
+
+}

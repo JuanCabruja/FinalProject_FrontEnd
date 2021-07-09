@@ -25,6 +25,7 @@ import LoginRedirect from '../controllers/LoginRedirect';
 import CollectionUpload from '../Pages/UserPrivatePages/CollectionUpload';
 import ProductDetails from '../Pages/MarketProducts/ProductDetails';
 import CollectionDetails from '../Pages/MarketProducts/CollectionDetails';
+import UserProfileEdit from '../Pages/UserPrivatePages/UserProfileEdit';
 
 export default function Router() {
   return (
@@ -40,7 +41,7 @@ export default function Router() {
             <Route path='/passwordForgotten'component={passwordForgotten} />
             <Route path='/products/:productId' component={ProductDetails} />
             <Route path='/collections/:collectionId' component={CollectionDetails} />
-            <PrivateRoute path='/config'>   </PrivateRoute>  
+            <PrivateRoute path='/config/:username' component={UserProfileEdit}>   </PrivateRoute>  
             <PrivateRoute path='/:username/upload'><CollectionUpload /></PrivateRoute>
             <Route path='/:username'><UserProfile /></Route>       
             <Route component={Error} /> 

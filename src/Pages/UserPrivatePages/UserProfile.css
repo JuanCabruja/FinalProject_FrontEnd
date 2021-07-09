@@ -1,9 +1,9 @@
-.firstUserBannerContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;  
-  margin-top: 1em;
-
+/* .firstUserBannerContainer {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    align-items: center;
+    justify-items: center;
 }
 
 .frontDashBoardInfoContainer {
@@ -46,4 +46,139 @@
       }
       
 
+} */
+
+.userBackground {
+    display: flex;
+    justify-content: center;
+}
+
+.mainPageContainer {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(2px) !important;
+    width: 80%;
+
+}
+
+.userFirstBanner {
+
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-column-gap: 16px;
+    grid-row-gap: 16px;
+    grid-template-areas: "userAvatar userAvatar username username username"
+                         "userAvatar userAvatar punctuation likes followers";
+    grid-template-rows: auto auto;
+
+    width: 70%;
+    margin-top: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.192);
+    border-radius: 10px;
+    padding: 16px;
+    background-color: rgba(255, 255, 255, 0.747);
+    backdrop-filter: blur(50px);
+
+}
+
+.items {
+display: flex;
+align-items: flex-start;
+justify-items: flex-start;
+width: 100%;
+margin: 5px;
+}
+
+.bio>h1 {
+    font-size: 3.5rem;
+}
+
+
+p, h1 {
+    margin: 2px;
+}
+.userAvatar {
+  grid-area: userAvatar;
+ 
+}
+
+.userImgWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+
+}
+
+.imgContainer { 
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.flexHandler {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    flex-direction: column;
+}
+
+.username {
+  grid-area: username;
+}
+.punctuation {
+  grid-area: punctuation;
+}
+.likes {
+  grid-area: likes;
+}
+.followers {
+  grid-area: followers;
+}
+
+.userBio {
+    width: 100%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.192);
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: rgba(255, 255, 255, 0.747);
+  
+}
+
+.secondUserBannercontainer {
+
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    display: grid;
+    gap: 2rem;
+  
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    grid-template-rows: repeat(3, auto);
+
+    background-color: rgba(255, 255, 255, 0.747);
+
+    justify-items: center;
+
+}
+
+
+@media screen and (max-width: 479px) {
+    .userFirstBanner {
+
+
+        grid-template-areas: "userAvatar userAvatar userAvatar"
+                             "username username username "
+                             "punctuation likes followers";
+        grid-template-columns: 1fr 1fr 1fr ;
+        grid-template-rows: auto auto auto auto;
+        
+    }
 }
