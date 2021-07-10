@@ -43,6 +43,7 @@ function UserProfile() {
   const history = useHistory();
 
   //TODO: Tengo que implementar un avatar Dummy
+  
   // TODO: Las fotos de perfil están funcionando, hay que organizar el formulario de actualización.
 
   // TODO: UNA VEZ SOLUCIONADOS TODOS LOS PARÁMETROS DEL USUARIO EN EL BACKEND, ESTABLECERÉ LAS PETICIONES QUE HARÉ AQUÍ. POR EL MOMENTO DEBO CONTINUAR COON EL HARDCODEO PARA LA MAQUETACIÓN
@@ -55,7 +56,7 @@ function UserProfile() {
   // }, []);
 
   const testStyle = {
-    backgroundImage: 'linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 1%, rgba(255, 255, 255, 1)), url(' + pageUser?.avatar + ')',
+    backgroundImage: 'linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 0.1%, rgba(255, 255, 255, 1)), url(' + pageUser?.avatar + ')',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     height: '100%',
@@ -65,10 +66,10 @@ function UserProfile() {
 
   return (
     <>
-      <div className="userBackground" style={testStyle}>
-        <div className="mainPageContainer" >
+      {/* <div className="userBackground" style={testStyle}> */}
+        <div className="mainPageContainer" style={testStyle}>
         
-            <div className="userFirstBanner">
+            <div className="userFirstBanner backgroundHandler">
               <div className="userImgWrapper userAvatar flexHandler"><img src={pageUser?.avatar} alt="" className=" imgContainer" /></div>
                 <div className="username flexHandler"><h1> {pageUser?.username}</h1> </div>
                 <div className="punctuation flexHandler"> <p>500</p><p>punctuation</p></div>
@@ -79,7 +80,7 @@ function UserProfile() {
           <div className="items">
             <h1>BIO:</h1>
           </div>
-          <div className="userBio flexHandler">
+          <div className="userBio flexHandler backgroundHandler">
             <p>{pageUser?.description}</p>
           </div>
 
@@ -87,7 +88,7 @@ function UserProfile() {
             {pageUser?.role === "CREATOR" ? <h1>Colecciones:</h1>
             : <h1>Prendas:</h1>}
           </div>
-          <div className="secondUserBannercontainer flexHandler">
+          <div className="secondUserBannercontainer flexHandler backgroundHandler">
             {/* <div className="clotheContainer"> */}
               {/* TODO: Implementar render de un componente CARD que obtenga la información de cada prenda que tenga el usuario.  */}
               {/* TODO: Está implementado de forma momentánea las cards para las colecciones del market */}
@@ -97,7 +98,7 @@ function UserProfile() {
             {/* </div> */}
           </div>
         </div>
-      </div>
+      {/* </div> */}
 
 
       {/* TODO: NO SÉ TODAVÍA SI ENCAJAR ESTO ACÁ, PERO CASI MEJOR QUE NO.  */}

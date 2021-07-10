@@ -12,6 +12,7 @@ import "./CollectionDetails.css";
 
 export default function CollectionDetails() {
   // TODO: Ya está implementado el Fetch que me da la colección, ahora tengo que hacer el botón para realizar la compra
+  // TODO: TENGO QUE VER EL TEMA DE QUE HACER CON LAS IMÁGENES HORIZONTALES.  
   // Y hacer el front de esta página
 
   // Importación de Parámetros
@@ -25,7 +26,7 @@ export default function CollectionDetails() {
   const [avatar, setAvatar] = useState("");
 
   const CollectionInfo = async () => {
-    const query = await fetch(COLLECTION_URL + collectionId);
+    const query = await fetch(COLLECTION_URL + 'details/' + collectionId);
     const response = await query.json();
 
     // if (response.status === 304) {
@@ -86,6 +87,7 @@ export default function CollectionDetails() {
     }
   };
 
+
   return (
     <div className="collectionDetailsContainer grid">
       <div className="collectionDetailsSideLeft">
@@ -104,14 +106,7 @@ export default function CollectionDetails() {
 
         <div className="displayerCollectionDescription">
           <p>
-            AQUI A LA DESCRIPCIÓN DE LA COLECCIÓN Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Vel, amet, soluta mollitia quos
-            tempore quod natus quas modi delectus, nam consequuntur culpa!
-            Accusamus vitae maxime saepe officiis praesentium quia assumenda
-            sint impedit amet nihil nobis cum odio, esse provident tenetur in
-            illum veritatis voluptatibus fugit reprehenderit omnis pariatur
-            soluta corrupti iusto. Mollitia hic perferendis ad, atque maxime
-            iusto enim consequuntur?
+            {collection.description}
           </p>
         </div>
 

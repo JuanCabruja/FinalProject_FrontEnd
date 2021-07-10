@@ -186,6 +186,7 @@ export default function UserProfileEdit() {
   };
 
   // Password change
+  // TODO: Falta Gestionar ESTA AUTENTICACIÓN
   const passwordInitialState = {
     password: loginUser.password,
     newPassword: "",
@@ -206,8 +207,7 @@ export default function UserProfileEdit() {
 
   return (
     <div className="BackgroundForms">
-      <div className="ContainerForms">
-        <div className="formAvatar">
+        <div className="formAvatar backgroundHandler">
           <h1>Cambia tu avatar:</h1>
           <form onSubmit={handleAvatarSubmit} className="formHandler ">
             <img src={loginUser.avatar} alt="" className="imgContainer" />
@@ -221,7 +221,7 @@ export default function UserProfileEdit() {
           </form>
         </div>
 
-        <div className="formInfo">
+        <div className="formInfo backgroundHandler">
           <h2>Cambia tu usuario y descripción:</h2>
           <form onSubmit={handleInfoSubmit} className="formHandler ">
             <input
@@ -246,7 +246,7 @@ export default function UserProfileEdit() {
           </form>
         </div>
 
-        <div className="formInfo">
+        <div className="formInfo backgroundHandler">
           <h2>Cambia tu email:</h2>
           <form onSubmit={handleEmailSubmit} className="formHandler ">
             <input
@@ -267,7 +267,7 @@ export default function UserProfileEdit() {
           </form>
         </div>
 
-        <div className="formInfo">
+        <div className="formInfo backgroundHandler">
           <h2>Cambia tu contraseña:</h2>
           <form onSubmit={handlePasswordSubmit} className="formHandler ">
             <input
@@ -288,13 +288,13 @@ export default function UserProfileEdit() {
           </form>
         </div>
 
-        <div className="formInfo">
+        <div className="formInfo backgroundHandler">
           <h2>¿Borrar tu cuenta?</h2>
           <form className="formHandler ">
             <DeleteUser />
           </form>
         </div>
       </div>
-    </div>
+
   );
 }

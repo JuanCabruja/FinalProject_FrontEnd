@@ -13,7 +13,7 @@ export default function CollectionCard({ item }) {
 
   return (
     <NavLink
-      to={`/collections/${item?._id}`}
+      to={`/collections/details/${item._id}`}
       className="collectionCardNav"
     >
       <div className="collectionController">

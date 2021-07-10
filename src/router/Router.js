@@ -40,8 +40,8 @@ export default function Router() {
             <Route path='/registration' component={Register} />
             <Route path='/passwordForgotten'component={passwordForgotten} />
             <Route path='/products/:productId' component={ProductDetails} />
-            <Route path='/collections/:collectionId' component={CollectionDetails} />
-            <PrivateRoute path='/config/:username' component={UserProfileEdit}>   </PrivateRoute>  
+            <Route path='/collections/details/:collectionId' component={CollectionDetails} />
+            <PrivateRoute path='/config/:username' component={UserProfileEdit} />
             <PrivateRoute path='/:username/upload'><CollectionUpload /></PrivateRoute>
             <Route path='/:username'><UserProfile /></Route>       
             <Route component={Error} /> 

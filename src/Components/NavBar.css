@@ -70,10 +70,12 @@ nav {
 
 .saffoLogo {
     font-family: 'Archivo Black', sans-serif, ;
+    /* font-family: 'Roboto Mono', monospace, 'Montserrat', sans-serif; */
+    font-weight: bolder;
 }
 
 .marker {
-    font-family: 'Roboto Mono', monospace, 'Montserrat', sans-serif;
+   
 }
 
 .marker:hover {
@@ -88,7 +90,7 @@ nav {
 :any-link { color: black }
 :any-link:hover { color: black;}
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 420px) {
     nav {
 
         background-color: rgb(255, 255, 255); 

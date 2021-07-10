@@ -13,11 +13,7 @@ code {
 }
 
 * {
-  font-family: 'Archivo Black', sans-serif;
-
-  font-family: 'Montserrat', sans-serif;
-
-  font-family: 'Roboto Mono', monospace;
+ 
   box-sizing: border-box;
   text-decoration: none;
 }

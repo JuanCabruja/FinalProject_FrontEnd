@@ -7,14 +7,14 @@
     padding: 10px;
 
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
 /* TODO: Revisar CSS GRID  */
 .articleContainer{
-    width: 80%;
-
+    width: 100%;
     display: grid;
     gap: 2rem;
     grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
@@ -22,4 +22,10 @@
 
     justify-content: center;
 
+}
+
+.basic-multi-select {
+    width: 90vw;
+    display: block;
+    margin: 10px;
 }

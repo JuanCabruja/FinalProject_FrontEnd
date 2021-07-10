@@ -1,8 +1,9 @@
 .BackgroundForms {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-
-    background-color: black;
+    align-items: center;
+    background-image: url('../../imgBank/pexels-pnw-production-7061909.jpg');
 }
 
 .ContainerForms {
@@ -11,11 +12,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    backdrop-filter: blur(2px) !important;
     width: 70%;
 
-    background-color:rgba(211, 204, 204, 0);
-    backdrop-filter: blur(5px);
 }
 
 [class^="form"] {
@@ -33,15 +31,13 @@
 
 .formAvatar {
   
-    background-color: rgba(255, 255, 255, 0.849);
-    backdrop-filter: blur(5px);
+  
 
 }
 
 .formInfo {
 
-    background-color: rgba(255, 255, 255, 0.849);
-    backdrop-filter: blur(5px);
+
 
 }
 

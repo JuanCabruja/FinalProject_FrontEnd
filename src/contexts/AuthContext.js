@@ -63,18 +63,7 @@ export default function AuthContext({children}) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
         }, []);
     
-    //TODO: Pongo aquí este fetch para usar un contexto general
-
     const [creators, setCreators] = useState([]);
-
-    // useEffect(() => {
-
-    //     fetch(USER_URL+"creators")
-    //         .then(response => response.json())
-    //         .then( data => setCreators(data.results));
-    //     return () => {
-    //     }
-    // }, [])
 
     const getCreators = async () => {
 
@@ -94,7 +83,6 @@ export default function AuthContext({children}) {
         signOut,
         getAuthHeaders,
         isCreator,
-        //TODO: Dejo esto aquí relativo al fetch
         creators
     };
 

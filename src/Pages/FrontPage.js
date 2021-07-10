@@ -69,11 +69,8 @@ export default function FrontPage() {
               infinite={true}
               containerClass="carousel-container"
               itemClass="carousel-item"
-              // draggable={false}
-              // ssr={true} // means to render carousel on server-side.
-              //  autoPlay={this.props.deviceType !== "mobile" ? true : false} autoPlaySpeed={1000} keyBoardControl={true}
-              //  removeArrowOnDeviceType={["tablet", "mobile"]} customTransition="all .5"
-              // deviceType={this.props.deviceType} dotListClass="custom-dot-list-style"
+              //  customTransition="all .5"
+             
             >
                {creators == [] ? (
                 <></>
@@ -106,11 +103,7 @@ export default function FrontPage() {
               infinite={true}
               containerClass="carousel-container"
               itemClass="carousel-item"
-              // draggable={false}
-              // ssr={true} // means to render carousel on server-side.
-              //  autoPlay={this.props.deviceType !== "mobile" ? true : false} autoPlaySpeed={1000} keyBoardControl={true}
-              //  removeArrowOnDeviceType={["tablet", "mobile"]} customTransition="all .5"
-              // deviceType={this.props.deviceType} dotListClass="custom-dot-list-style"
+   
             >
               {collections?.map(item => 
               <CollectionCard item={item}/>)}
