@@ -10,6 +10,7 @@ padding: 5px;
 
 .collectionCardNav:hover {
   transform: scale(1.03);
+  image-rendering: smooth;
 }
 
 .collectionController {

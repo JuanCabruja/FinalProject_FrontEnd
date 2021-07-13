@@ -1,4 +1,4 @@
-import { Redirect, Route } from "react-router";
+import {  Route } from "react-router";
 import { useAuthContext } from "../contexts/AuthContext";
 
 export default function PrivateRoute({ children, ...rest }) {
@@ -9,7 +9,7 @@ export default function PrivateRoute({ children, ...rest }) {
         <Route {...rest} render={() => {
             return isAuthenticated
                 ? children
-                : <></>// : <Redirect exact to="/login" />
+                : <></>// : <Redirect exact to="/login" /> Ese redirect podría importarlo de ser necesario.
         }} />
     )
 }

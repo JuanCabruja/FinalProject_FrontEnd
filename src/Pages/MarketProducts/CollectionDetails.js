@@ -11,7 +11,7 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import "./CollectionDetails.css";
 
 export default function CollectionDetails() {
-  // TODO: Ya está implementado el Fetch que me da la colección, ahora tengo que hacer el botón para realizar la compra
+
   // TODO: TENGO QUE VER EL TEMA DE QUE HACER CON LAS IMÁGENES HORIZONTALES.  
   // Y hacer el front de esta página
 

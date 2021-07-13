@@ -2,16 +2,15 @@ import { useState } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import { useAuthContext } from "../contexts/AuthContext";
 import { Button, Menu, MenuItem } from "@material-ui/core";
-
+import { useNavForm } from "../Hooks/useNavForm";
 import "./NavBar.css";
+// import { UTILITIES_URL } from "../config/config";
 
-import { SvgIcon } from "@material-ui/core";
-
-import { faEllipsisV } from '@fortawesome/free-solid-svg-icons'
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default function NavBar() {
+
   const { isAuthenticated, loginUser, signOut, isCreator } = useAuthContext();
   const history = useHistory();
 
@@ -30,8 +29,10 @@ export default function NavBar() {
     setAnchorEl(null);
   };
 
-  //TODO: Tengo aquí pendiente que gestionar el hecho de que la página al hacer una redirección me recibe como que fuese un usuario y me envía a una página de usuario vacía
-  //TODO: Preguntarle a Jesús como gestiono el refresh al momento de entrar a la página
+  const formInitialState = {searchForm: ""}
+  const [query, HandleInputchange] = useNavForm(formInitialState)
+
+  console.log(query);
 
   return (
     <nav className="mainNav ">
@@ -43,13 +44,14 @@ export default function NavBar() {
           </NavLink>
         </div>
         <form className="navFormSearch" onSubmit="">
+
           <input
             type="search"
             id="form1"
             className="navSearchInput navSearchInputStyle"
             placeholder="What are you looking for?"
-            onChange=""
-
+            onChange={HandleInputchange}
+            name="searchForm"
           />
         </form>
 

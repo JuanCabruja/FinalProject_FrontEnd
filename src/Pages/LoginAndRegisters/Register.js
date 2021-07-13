@@ -1,8 +1,7 @@
 import { useForm } from "../../Hooks/useForm";
-import { AuthContext, useAuthContext } from "../../contexts/AuthContext"; 
+import { useAuthContext } from "../../contexts/AuthContext"; 
 import {useHistory} from "react-router-dom";
 import { USER_URL } from "../../config/config";
-import { NavLink } from 'react-router-dom';
 
 import './Login.css';
 
@@ -33,6 +32,7 @@ export default function Register() {
         if (response.status === 201) {
             // signIn(data.token, data.user);
 
+            //TODO: Aquí tengo que establecer un código de LogIn 
             history.push("/login");
             alert("¡Usuario creado! Pruébalo haciendo Login");
     

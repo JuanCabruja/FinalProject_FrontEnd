@@ -2,14 +2,12 @@ import { useState, useEffect } from "react";
 import  FrontCardCreators from "../Components/FrontCardCreators";
 import CollectionCard from "../Components/CollectionCard";
 import { responsive } from "../config/carousel_config";
-import { useAuthContext } from "../contexts/AuthContext";
 import { USER_URL, COLLECTION_URL } from "../config/config";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import "./FrontPage.css";
 
 export default function FrontPage() {
-  // const { creators } = useAuthContext();
 
   const [creators, setCreators] = useState([]);
 
@@ -56,11 +54,14 @@ export default function FrontPage() {
 
 
       <div className="frontContentBanner1">
+
         <div className="titleContainer">
           <h2> Artistas exclusivos en SAFFO</h2>
         </div>
+
         <div className="banner1Carousel">
           <div className="carouselController">
+
             <Carousel
               swipeable={false}
               responsive={responsive}
@@ -72,7 +73,7 @@ export default function FrontPage() {
               //  customTransition="all .5"
              
             >
-               {creators == [] ? (
+               {creators === [] ? (
                 <></>
               ) : (
                 creators?.map((creator) => (

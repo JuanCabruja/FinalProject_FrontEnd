@@ -1,22 +1,22 @@
 import { useForm } from "../../Hooks/useForm";
-import { AuthContext, useAuthContext } from "../../contexts/AuthContext"; 
+import { useAuthContext } from "../../contexts/AuthContext"; 
 import {useHistory} from "react-router-dom";
 import { LOGIN_URL } from "../../config/config";
 import { NavLink } from 'react-router-dom';
 
 import './Login.css';
-// TODO: Arreglar el css del background del login (LA QUERY) al abrir el inspector de elementos se rompe y se hace pequeño.
-// TODO: Escribir la función que hace que no se pueda acceder al área de Login si ya estás autenticado
  
 export default function Login() {
 
-    const {signIn, loginUser} = useAuthContext();
+    const { signIn } = useAuthContext();
 
     const history = useHistory();
  
     const formInitialState = {email: "", password:""};
     const [form, handleChange] = useForm(formInitialState);
- 
+    
+    //TODO: ¿Podría gestionar con esto la redirección de la modificación del formulario? 
+    
     const handleSubmit = async e => {
         
         e.preventDefault();

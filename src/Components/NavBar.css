@@ -85,8 +85,7 @@ nav {
 .active {
     font-weight: bolder;
 }
-/* Utilizo esta propiedad para hacer override a a:-webkit-any-link */
-/* TODO: Revisar con jesús porque tengo un problema aquí en el CSS con la clase :any-link que he tenido que hacer Override */
+
 :any-link { color: black }
 :any-link:hover { color: black;}
 

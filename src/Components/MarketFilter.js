@@ -1,12 +1,14 @@
 import React from 'react';
-import { useForm } from '../Hooks/useForm';
+// import { useForm } from '../Hooks/useForm';
 
 import './MarketFilter.css'
 
 export default function MarketFilter() {
 
-    const formInitialState = {};
-    const [form, handleInputChange] = useForm(formInitialState);
+    // TODO: Por ahora no estoy incluyendo este componente
+    // const formInitialState = {};
+    // const [form, handleInputChange] = useForm(formInitialState);
+
     return (
         <div className="marketFilterContainer">
             

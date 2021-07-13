@@ -4,17 +4,17 @@
     background-image: linear-gradient(to top, rgba(253, 253, 253, 0) 5%, rgba(255, 255, 255, 1)); 
     background-size: auto;
     background-position: center;
-    padding: 10px;
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
 /* TODO: Revisar CSS GRID  */
+
 .articleContainer{
-    width: 100%;
+    width: 73vw;
     display: grid;
     gap: 2rem;
     grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
@@ -24,8 +24,32 @@
 
 }
 
+
 .basic-multi-select {
-    width: 90vw;
+    width: 70vw;
     display: block;
     margin: 10px;
 }
+
+
+/* .searchContainer {
+    width: 15vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-items: top;
+    align-items: baseline;
+    background-color: blue;
+    padding: 5px;
+
+} */
+
+/* [class^="searchButton"] {
+    backdrop-filter: blur(50px);
+    width: 100%;
+    border-radius: 3px;
+    background-color: rgba(240, 248, 255, 0.356);
+    padding: 5px;
+    margin-top: 5px;
+
+} */

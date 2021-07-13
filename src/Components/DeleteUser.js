@@ -3,8 +3,6 @@ import { useAuthContext } from '../contexts/AuthContext';
 import { USER_URL } from '../config/config';
 import { useHistory, useParams } from 'react-router';
 
-import axios from 'axios';
-
 export default function DeleteUser({loginUser, token}) {
 
     const {getAuthHeaders} = useAuthContext();

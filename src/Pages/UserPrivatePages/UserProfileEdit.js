@@ -6,16 +6,17 @@ import { useForm } from "../../Hooks/useForm";
 import DeleteUser from "../../Components/DeleteUser";
 import axios from "axios";
 import "./UserProfileEdit.css";
+import { useHistory } from "react-router";
 
 export default function UserProfileEdit() {
   const { isAuthenticated, loginUser, getAuthHeaders, getToken } =
     useAuthContext();
+    const history = useHistory();
 
   // User Avatar update
   const [inputValue, setInputValue] = useState({});
 
   const handleAvatarChange = (e) => {
-    const inputName = e.target.name;
     const inputValue = e.target.files[0];
     setInputValue(inputValue);
   };
@@ -85,6 +86,7 @@ export default function UserProfileEdit() {
 
       if (response.status === 200) {
         console.log(data);
+        window.location.reload();
       } else if (response.status === 400) {
         alert("Error en la información");
       }
@@ -118,6 +120,7 @@ export default function UserProfileEdit() {
 
       if (response.status === 200) {
         console.log(data);
+        history.push(`/config/${options.body.username}`) //TODO: AQUI
       } else if (response.status === 400) {
         alert("Error en la información");
       }
@@ -141,6 +144,7 @@ export default function UserProfileEdit() {
 
       if (response.status === 200) {
         console.log(data);
+        history.push(`/config/${userForm.username}`)
       } else if (response.status === 400) {
         alert("Error en la información");
       }
@@ -207,94 +211,91 @@ export default function UserProfileEdit() {
 
   return (
     <div className="BackgroundForms">
-        <div className="formAvatar backgroundHandler">
-          <h1>Cambia tu avatar:</h1>
-          <form onSubmit={handleAvatarSubmit} className="formHandler ">
-            <img src={loginUser.avatar} alt="" className="imgContainer" />
-            <input
-              type="file"
-              name="avatar"
-              onInput={handleAvatarChange}
-              className="imgInput"
-            />
-            <input type="submit" value="Sube la nueva foto" />
-          </form>
-        </div>
-
-        <div className="formInfo backgroundHandler">
-          <h2>Cambia tu usuario y descripción:</h2>
-          <form onSubmit={handleInfoSubmit} className="formHandler ">
-            <input
-              onChange={handleUserFormInputChange}
-              name="newUsername"
-              type="text"
-              className="textInput"
-              placeholder="username"
-            />
-            <textarea
-              onChange={handleUserFormInputChange}
-              rows="10"
-              cols="60"
-              name="description"
-              className="textInput"
-              placeholder="Realiza una breve descripción para tu perfil"
-            >
-            
-            </textarea>
-           
-            <input type="submit" value="Cambiar usuario y descripción" />
-          </form>
-        </div>
-
-        <div className="formInfo backgroundHandler">
-          <h2>Cambia tu email:</h2>
-          <form onSubmit={handleEmailSubmit} className="formHandler ">
-            <input
-              onChange={handleEmailFormInputChange}
-              name="newEmail"
-              type="email"
-              className="textInput"
-              placeholder="Ingresa el nuevo correo"
-            />
-            <input
-              onChange={handleEmailFormInputChange}
-              name="confirmationNewEmail"
-              type="controlEmail"
-              className="textInput"
-              placeholder="Ingresa una vez mas el correo"
-            />
-            <input type="submit" value="Cambiar correo" />
-          </form>
-        </div>
-
-        <div className="formInfo backgroundHandler">
-          <h2>Cambia tu contraseña:</h2>
-          <form onSubmit={handlePasswordSubmit} className="formHandler ">
-            <input
-              onChange={handleEmailFormInputChange}
-              name="newPassword"
-              type="password"
-              className="textInput"
-              placeholder="Nueva contraseña"
-            />
-            <input
-              onChange={handleEmailFormInputChange}
-              name="newPasswordConfirmation"
-              type="password"
-              className="textInput"
-              placeholder="Confirma tu nueva contraseña"
-            />
-            <input type="submit" value="Cambia tu contraseña" />
-          </form>
-        </div>
-
-        <div className="formInfo backgroundHandler">
-          <h2>¿Borrar tu cuenta?</h2>
-          <form className="formHandler ">
-            <DeleteUser />
-          </form>
-        </div>
+      <div className="formAvatar backgroundHandler">
+        <h1>Cambia tu avatar:</h1>
+        <form onSubmit={handleAvatarSubmit} className="formHandler ">
+          <img src={loginUser.avatar} alt="" className="imgContainer" />
+          <input
+            type="file"
+            name="avatar"
+            onInput={handleAvatarChange}
+            className="imgInput"
+          />
+          <input type="submit" value="Sube la nueva foto" />
+        </form>
       </div>
 
+      <div className="formInfo backgroundHandler">
+        <h2>Cambia tu usuario y descripción:</h2>
+        <form onSubmit={handleInfoSubmit} className="formHandler ">
+          <input
+            onChange={handleUserFormInputChange}
+            name="newUsername"
+            type="text"
+            className="textInput"
+            placeholder="username"
+          />
+          <textarea
+            onChange={handleUserFormInputChange}
+            rows="10"
+            cols="60"
+            name="description"
+            className="textInput"
+            placeholder="Realiza una breve descripción para tu perfil"
+          ></textarea>
+
+          <input type="submit" value="Cambiar usuario y descripción" />
+        </form>
+      </div>
+
+      <div className="formInfo backgroundHandler">
+        <h2>Cambia tu email:</h2>
+        <form onSubmit={handleEmailSubmit} className="formHandler ">
+          <input
+            onChange={handleEmailFormInputChange}
+            name="newEmail"
+            type="email"
+            className="textInput"
+            placeholder="Ingresa el nuevo correo"
+          />
+          <input
+            onChange={handleEmailFormInputChange}
+            name="confirmationNewEmail"
+            type="controlEmail"
+            className="textInput"
+            placeholder="Ingresa una vez mas el correo"
+          />
+          <input type="submit" value="Cambiar correo" />
+        </form>
+      </div>
+
+      <div className="formInfo backgroundHandler">
+        <h2>Cambia tu contraseña:</h2>
+        <form onSubmit={handlePasswordSubmit} className="formHandler ">
+          <input
+            onChange={handleEmailFormInputChange}
+            name="newPassword"
+            type="password"
+            className="textInput"
+            placeholder="Nueva contraseña"
+          />
+          <input
+            onChange={handleEmailFormInputChange}
+            name="newPasswordConfirmation"
+            type="password"
+            className="textInput"
+            placeholder="Confirma tu nueva contraseña"
+          />
+          <input type="submit" value="Cambia tu contraseña" />
+        </form>
+      </div>
+
+      <div className="formInfo backgroundHandler">
+        <h2>¿Borrar tu cuenta?</h2>
+        <form className="formHandler ">
+          <DeleteUser />
+        </form>
+      </div>
+    </div>
   );
 }

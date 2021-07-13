@@ -1,9 +1,11 @@
 import React from 'react'
+import './Footer.css';
 
 export default function Footer() {
     return (
-        <div className="bg-success p-3 mt-1">
-            <h1>Futuro Footer</h1>
+        <div className="footer">
+           <p>SAFFO &copy; 2021</p>
+           <p>Por Juan F. Cabruja</p>
         </div>
     )
 }

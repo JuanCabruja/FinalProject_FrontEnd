@@ -78,6 +78,7 @@ export default function AuthContext({children}) {
         loginUser,
         isAuthenticated,
         isAdmin,
+        getCreators,
         getToken,
         signIn,
         signOut,

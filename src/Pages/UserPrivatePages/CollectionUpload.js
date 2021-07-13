@@ -16,8 +16,6 @@ import './collectionUpload.css'
 
 export default function CollectionUpload() {
 
-    //TODO: Falta por revisar el tema de la asociación de Categorías, pero en gran parte el formulario está hecho. 
-    // Esto tiene pinta de que lo utilizaré como un componente flotante, o algo así. 
 
     const {signIn, loginUser, getAuthHeaders} = useAuthContext();
     const history = useHistory();
@@ -35,7 +33,6 @@ export default function CollectionUpload() {
 
     };
 
-    //TODO: No sé por qué no me renderiza el SELECT usaré este mismo código en el filter del Market
     const [categories, setCategories] = useState([])
 
     const getCategories = async () => {

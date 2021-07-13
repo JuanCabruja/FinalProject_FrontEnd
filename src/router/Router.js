@@ -1,13 +1,10 @@
 // Import from React Router
 
-import {BrowserRouter, Route, Switch, NavLink} from 'react-router-dom';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 // CSS
 
 import './Router';
-
-// Logo Import
-import Logo from "../Images/Saffo_LOGO.png";
 
 // Pages import
 

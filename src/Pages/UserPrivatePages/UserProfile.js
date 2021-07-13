@@ -1,77 +1,82 @@
 import { useParams } from "react-router";
-import { Children, useEffect } from "react";
-import { useState } from "react";
-import { useFetch } from "../../Hooks/useFetch";
+import { useState, useEffect } from "react";
 import { USER_URL } from "../../config/config";
 import { useAuthContext } from "../../contexts/AuthContext";
 import dummyPic from "../../imgBank/ThisPersonDoesNotExist.jpg";
 import "./UserProfile.css";
-import axios from "axios";
-import { useHistory } from "react-router";
 import { NavLink } from "react-router-dom";
+import ProfileCreatorItem from "../../Components/ProfileCreatorItem";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserEdit } from '@fortawesome/free-solid-svg-icons'
 
-import { useForm } from "../../Hooks/useForm";
-
-//TODO: IMPORT para hacer una prueba visual
-
-import CollectionCard from "../../Components/CollectionCard"
-import ProfileItem from "../../Components/ProfileItem";
-
-//TODO: Va a ver haber que ver como implementar en este página una comprobación, si el usuario está logeado y coincide con el token/email mostrará
-// un botón para editar el perfil
-
+import ProfileUserItem from "../../Components/ProfileUserItem";
 
 
 function UserProfile() {
-  const { isAuthenticated, loginUser, token, getAuthHeaders, isCreator } =
+  const { isAuthenticated, loginUser, isCreator } =
     useAuthContext();
 
-  // const formInitialState = {avatar: "", username: loginUser.username};
-  // const [form, handleInputChange] = useForm(formInitialState);
+  //TODO: Tengo que implementar un avatar Dummy
 
   // Fetch sobre información para la página de usuario.
   let { username } = useParams();
   const [user, setUser] = useState({});
+  const [pageUser, setPageUser] = useState({})
+  const [userProducts, setUserProducts] = useState([])
 
-  useFetch(USER_URL + username, setUser);
 
-  const pageUser = user.user;
+
+  const mainVisit = async e => {
+
+    const query = await fetch(USER_URL + username)
+    const response = await query.json()
+    console.log(response);
+
+    setUser(response)
+    setPageUser(response.user)
+
+    if ( response.user.role === "USER") {
+      setUserProducts(response.products);
+    } else if ( response.user.role === "CREATOR") {
+      setUserProducts(response.collection);
+    }
+
+  }
+ 
+
   console.log(user);
   console.log(pageUser);
-  const userProducts = user.collection;
   console.log(userProducts);
-  const history = useHistory();
 
-  //TODO: Tengo que implementar un avatar Dummy
-  
-  // TODO: Las fotos de perfil están funcionando, hay que organizar el formulario de actualización.
-
-  // TODO: UNA VEZ SOLUCIONADOS TODOS LOS PARÁMETROS DEL USUARIO EN EL BACKEND, ESTABLECERÉ LAS PETICIONES QUE HARÉ AQUÍ. POR EL MOMENTO DEBO CONTINUAR COON EL HARDCODEO PARA LA MAQUETACIÓN
-
-  // useEffect(() => {
-  //   window.location.reload();
-
-
-  //   return () => {};
-  // }, []);
-
-  const testStyle = {
-    backgroundImage: 'linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 0.1%, rgba(255, 255, 255, 1)), url(' + pageUser?.avatar + ')',
+  useEffect(() => {
+    mainVisit()
+    return () => {
+      
+    }
+  }, [])
+ 
+  const Style = {
+    backgroundImage: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0.1%, rgba(0, 0, 0, 1)), url(' + pageUser?.avatar + ')',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    height: '100%',
-    width: '100%'
+    minHeight: '100vh',
+    width: '100%',
+    padding: '5px'
   };
 
 
   return (
     <>
-      {/* <div className="userBackground" style={testStyle}> */}
-        <div className="mainPageContainer" style={testStyle}>
+        <div className="mainPageContainer" style={Style}>
         
             <div className="userFirstBanner backgroundHandler">
               <div className="userImgWrapper userAvatar flexHandler"><img src={pageUser?.avatar} alt="" className=" imgContainer" /></div>
-                <div className="username flexHandler"><h1> {pageUser?.username}</h1> </div>
+                <div className="username flexHandler flexRow"><h1> {pageUser?.username}</h1>
+                {isAuthenticated && loginUser.username == username ? (
+                <NavLink to={"config/"+loginUser.username} className="editProfileIcon"> <FontAwesomeIcon icon={faUserEdit} className="collectionLikeButton" size="3x" /></NavLink>
+              ) : (
+                <></>
+              )} </div>
                 <div className="punctuation flexHandler"> <p>500</p><p>punctuation</p></div>
                 <div className="likes flexHandler"><p>500</p><p>likes</p></div>
                 <div className="followers flexHandler"> <p>500</p><p>followers</p></div>
@@ -89,25 +94,18 @@ function UserProfile() {
             : <h1>Prendas:</h1>}
           </div>
           <div className="secondUserBannercontainer flexHandler backgroundHandler">
-            {/* <div className="clotheContainer"> */}
-              {/* TODO: Implementar render de un componente CARD que obtenga la información de cada prenda que tenga el usuario.  */}
-              {/* TODO: Está implementado de forma momentánea las cards para las colecciones del market */}
-              {userProducts?.map((item) => (
-                <ProfileItem item={item}/>
-              ))}
-            {/* </div> */}
+  
+
+              {pageUser.role === "CREATOR" ? userProducts?.map((item) => (
+                <ProfileCreatorItem item={item}/>
+              ))
+            
+              : userProducts?.map((item) => (
+                <ProfileUserItem item={item}/>))}
+
+    
           </div>
         </div>
-      {/* </div> */}
-
-
-      {/* TODO: NO SÉ TODAVÍA SI ENCAJAR ESTO ACÁ, PERO CASI MEJOR QUE NO.  */}
-      {isAuthenticated && loginUser.username == username ? (
-                <NavLink to={"config/"+loginUser.username}>EDITAR</NavLink>
-              ) : (
-                <></>
-              )}
-
     </>
   );
 }
