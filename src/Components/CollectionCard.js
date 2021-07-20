@@ -19,7 +19,7 @@ export default function CollectionCard({ item }) {
             <img
               src={item.author.avatar}
               alt="saffoUserAvatar"
-              srcset=""
+              srcSet=""
               className="collectionCardAvatar"
             />
 
@@ -31,13 +31,13 @@ export default function CollectionCard({ item }) {
           </header>
 
         <div className="collectionImgWrapper">
-          <img src={item?.images[0]} alt="" srcset="" className="collectionCardImg" />
+          <img src={item?.images[0]} alt="" srcSet="" className="collectionCardImg" />
         </div>
 
         <div className="collectionInfo">
           <div className="collectionInfoLeft">
             <p>{item.name}</p> <p>Cantidad: {item.supply}</p>{" "}
-            <p on>precio: {item.price}€</p>
+            <p>precio: {item.price}€</p>
           </div>
           <div className="collectionInfoRight">
             <p>TEST</p>

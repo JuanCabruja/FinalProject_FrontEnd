@@ -11,7 +11,7 @@ export default function FrontCardCreators({ item }) {
     <NavLink to={`${item.username}`} className="collectionCardNav">
       <div className="itemController">
         <div className="itemImgWrapper">
-          <img src={item?.avatar} alt="" srcset="" className="itemCardImg" />
+          <img src={item?.avatar} alt="" srcSet="" className="itemCardImg" />
         </div>
         <div className="itemInfo">
           <div className="itemInfoLeft">

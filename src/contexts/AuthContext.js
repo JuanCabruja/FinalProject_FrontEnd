@@ -9,7 +9,6 @@ export default function AuthContext({children}) {
     const [loginUser, setLoginUser] = useState({});
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  
     const getToken = () => localStorage.getItem("TOKEN_KEY");
     const setToken = token => localStorage.setItem("TOKEN_KEY", token);
     const removeToken = () => localStorage.removeItem("TOKEN_KEY");

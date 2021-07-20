@@ -2,7 +2,7 @@ import React from "react";
 import './ProfileItem.css'
 import { NavLink } from "react-router-dom";
 
-export default function ProfileItem({ item }) {
+export default function ProfileCreatorItem({ item }) {
 
   return (
       <NavLink to={`/collections/details/${item._id}`} className="collectionCardNav">
@@ -11,7 +11,7 @@ export default function ProfileItem({ item }) {
             <img
               src={item.images[0]}
               alt=""
-              srcset=""
+              srcSet=""
               className="itemCardImg"
             />
           </div>

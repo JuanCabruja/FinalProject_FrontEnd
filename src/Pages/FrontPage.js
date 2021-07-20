@@ -10,6 +10,7 @@ import "./FrontPage.css";
 export default function FrontPage() {
 
   const [creators, setCreators] = useState([]);
+  const [collections, setCollections] = useState([]);
 
   const getAssets = async () => {
     const response = await fetch(USER_URL + "creators");
@@ -19,19 +20,15 @@ export default function FrontPage() {
     const res = await fetch(COLLECTION_URL);
     const collections = await res.json();
     setCollections(collections.collection);
-    console.log(collections);
   };
   
-  const [collections, setCollections] = useState([]);
+  
 
 
   useEffect(() => {
    getAssets();
     return () => {};
   }, []);
-
-  console.log(creators);
-  console.log(collections)
 
   return (
     <>
@@ -78,7 +75,7 @@ export default function FrontPage() {
               ) : (
                 creators?.map((creator) => (
                   <FrontCardCreators
-                    item={creator}
+                    item={creator} key={creator.username}
                   />
                 ))
               )}
@@ -94,7 +91,6 @@ export default function FrontPage() {
           <h2> Trending en SAFFO</h2>
         </div>
         <div className="banner1Carousel">
-          {/* TODO: Para el carousel, tendré que hacer un punto de la API o un FETCH que pida Artículos */}
           <div className="carouselController">
             <Carousel
               swipeable={false}
@@ -104,10 +100,11 @@ export default function FrontPage() {
               infinite={true}
               containerClass="carousel-container"
               itemClass="carousel-item"
-   
             >
-              {collections?.map(item => 
-              <CollectionCard item={item}/>)}
+              {collections.map(item => 
+              <CollectionCard item={item} key={item.author.username} />)}
+        
+      
             </Carousel>
           </div>
         </div>

@@ -11,14 +11,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default function NavBar() {
 
+
+  // Imports de Contexto
   const { isAuthenticated, loginUser, signOut, isCreator } = useAuthContext();
   const history = useHistory();
 
+  // Función que desloguea al usuario
   const handleSignOut = () => {
     signOut();
     history.push("/");
   };
 
+  // Gestión de Botón una vez Logueado
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (event) => {
@@ -29,8 +33,7 @@ export default function NavBar() {
     setAnchorEl(null);
   };
 
-  const formInitialState = {searchForm: ""}
-  const [query, HandleInputchange] = useNavForm(formInitialState)
+  const [query, HandleInputchange] = useNavForm()
 
   console.log(query);
 
@@ -43,7 +46,8 @@ export default function NavBar() {
             <h1 className="marker">SAFFO</h1>{" "}
           </NavLink>
         </div>
-        <form className="navFormSearch" onSubmit="">
+
+        <form className="navFormSearch" > {/* onSubmit={}*/}
 
           <input
             type="search"
@@ -53,6 +57,7 @@ export default function NavBar() {
             onChange={HandleInputchange}
             name="searchForm"
           />
+          
         </form>
 
 
@@ -61,7 +66,7 @@ export default function NavBar() {
             Marketplace
           </NavLink>
   
-          {isAuthenticated ? (
+          {(isAuthenticated ) ? (
             <div>
               <Button className="button"
                 aria-controls="simple-menu"

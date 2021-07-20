@@ -17,8 +17,7 @@ export default function CollectionDetails() {
 
   // Importación de Parámetros
   let { collectionId } = useParams();
-  const { loginUser, isAuthenticated, getToken, getAuthHeaders } =
-    useAuthContext();
+  const { loginUser,  getToken } = useAuthContext();
 
   // Fetch Básico para el funcionamiento de la Página
   const [collection, setCollection] = useState({});
@@ -43,16 +42,13 @@ export default function CollectionDetails() {
     setAvatar(response.collection[0].author.avatar);
   };
 
+
   useEffect(() => {
+  
     CollectionInfo();
-
     return () => {};
+  // eslint-disable-next-line
   }, []);
-
-  console.log(collection);
-  console.log(loginUser);
-  console.log(collectionImages);
-  console.log(avatar);
 
   const form = {
     parentCollection: collection._id,
@@ -95,7 +91,7 @@ export default function CollectionDetails() {
           <img
             src={avatar}
             alt=""
-            srcset=""
+            srcSet=""
             className="detailsImgContainer avatar"
           />
           <div className="displayerCollectionHeaderInfo">
@@ -149,7 +145,7 @@ export default function CollectionDetails() {
           <p>wait</p>
         ) : (
           collectionImages.map((image) => (
-            <img src={image} className="collection-carousel-image" />
+            <img src={image} className="collection-carousel-image" alt="" key={image}/>
           ))
         )}
       </Carousel>

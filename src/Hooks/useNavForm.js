@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { UTILITIES_URL } from "../config/config";
 
-//TODO: Por ahora está entregándome las colecciones, pero debo finiquitar si va a enseñar las opciones. 
-
 const useNavForm = (initialState) => {
 
     const [query, setQuery] = useState({})
@@ -28,3 +26,5 @@ const useNavForm = (initialState) => {
 }
 
 export {useNavForm};
+
+

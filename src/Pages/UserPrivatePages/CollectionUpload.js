@@ -1,23 +1,22 @@
 import { useForm } from "../../Hooks/useForm";
-import { AuthContext, useAuthContext } from "../../contexts/AuthContext"; 
+import { useAuthContext } from "../../contexts/AuthContext"; 
 import {useHistory} from "react-router-dom";
 import { COLLECTION_URL } from "../../config/config";
-import { NavLink } from 'react-router-dom';
-import { log } from "loglevel";
+
 import axios from "axios";
 import { useState, useEffect } from "react";
 import img from '../../imgBank/modaymoda.jpeg'
 import { CATEGORY_URL } from "../../config/config";
 import Select from "react-select";
 
-
-
 import './collectionUpload.css'
+
+//TODO: ASIGNA UNA PROPIEDAD ALT A LAS IMAGENES
 
 export default function CollectionUpload() {
 
 
-    const {signIn, loginUser, getAuthHeaders} = useAuthContext();
+    const {loginUser, getAuthHeaders} = useAuthContext();
     const history = useHistory();
  
     const formInitialState = {collectionName: "", collectionSupply: "", collectionPrice: "", collectionImages: [{}], description: "", author: loginUser._id};
@@ -26,8 +25,6 @@ export default function CollectionUpload() {
     const [inputValue, setInputValue] = useState([])
 
     const handleImageChange = e => {
-   
-        const inputName = e.target.name;
         const inputValue = e.target.files;
         setInputValue(inputValue)
 
@@ -50,7 +47,7 @@ export default function CollectionUpload() {
     const handleSubmit = async e => {
         e.preventDefault();
         let formData = new FormData();
-        for (let i = 0, f; f = inputValue[i]; i++) { formData.append('collectionImages', inputValue[i])}
+        for (let i = 0 ; i < inputValue.length; i++) { formData.append('collectionImages', inputValue[i])}
         formData.append('collectionName', form.collectionName);
         formData.append('collectionSupply', form.collectionSupply);
         formData.append('collectionPrice', form.collectionPrice);
@@ -58,12 +55,13 @@ export default function CollectionUpload() {
         formData.append('author', loginUser._id);
         formData.append('role', loginUser.role);
         formData.append('description', form.description)
-        for (let i = 0, f; f = sendCategories[i]; i++) { formData.append('categories', sendCategories[i].value)}
+        for (let i = 0 ; i < sendCategories.length; i++) { formData.append('categories', sendCategories[i].value)}
 
         const option = { headers: getAuthHeaders() }
 
         axios.post(COLLECTION_URL, formData, option).then(res => { 
             history.push('/'+loginUser.username);
+            alert("Colección subida con éxito")
         })
     };
 

@@ -1,14 +1,17 @@
 import { COLLECTION_URL } from "../../config/config";
 import { useState, useEffect } from "react";
 import CollectionCard from "../../Components/CollectionCard";
-import MarketFilter from "../../Components/MarketFilter";
+
 import Select from "react-select";
 import { CATEGORY_URL } from "../../config/config";
 import "./Market.css";
-import { BASE_API_URL } from "../../config/config";
-import { PRODUCT_URL } from "../../config/config";
+
+// IMPORTS QUE POR EL MOMENTO NO ESTOY USANDO 
+// import MarketFilter from "../../Components/MarketFilter";
+// import { BASE_API_URL } from "../../config/config";
+// import { PRODUCT_URL } from "../../config/config";
+
 function Market() {
-  const [response, setResponse] = useState([]);
 
   const [collections, setCollections] = useState([]);
 
@@ -108,7 +111,7 @@ function Market() {
         
 
           {collections?.map((item) => (
-            <CollectionCard item={item} />
+            <CollectionCard item={item} key={item._id}/>
           ))}
         </div>
       </div>

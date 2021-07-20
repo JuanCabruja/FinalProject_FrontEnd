@@ -45,6 +45,7 @@ export default function UserProfileEdit() {
   };
 
   // User username & description update
+  //TODO: Este algoritmo no se está gestionando correctamente. 
   const userFormInitialState = {
     username: loginUser.username,
     newUsername: loginUser.username,
@@ -57,7 +58,7 @@ export default function UserProfileEdit() {
   const handleInfoSubmit = async (e) => {
     e.preventDefault();
 
-    if (userForm.newUsername === "") {
+    if (userForm.newUsername === loginUser.username) {
       const newUserForm = {
         username: userForm.username,
         newUsername: loginUser.username,
@@ -86,7 +87,8 @@ export default function UserProfileEdit() {
 
       if (response.status === 200) {
         console.log(data);
-        window.location.reload();
+        alert("Descripción actualizada correctamente")
+        // window.location.reload();
       } else if (response.status === 400) {
         alert("Error en la información");
       }
@@ -120,7 +122,7 @@ export default function UserProfileEdit() {
 
       if (response.status === 200) {
         console.log(data);
-        history.push(`/config/${options.body.username}`) //TODO: AQUI
+        history.push(`/config/${options.body.username}`) 
       } else if (response.status === 400) {
         alert("Error en la información");
       }
@@ -190,23 +192,48 @@ export default function UserProfileEdit() {
   };
 
   // Password change
-  // TODO: Falta Gestionar ESTA AUTENTICACIÓN
   const passwordInitialState = {
-    password: loginUser.password,
+    id: loginUser._id,
     newPassword: "",
     newPasswordConfirmation: "",
   };
-  const [passwordForm, handlePasswordFormInputChange] =
-    useForm(emailInitialState);
+  const [passwordForm, handlePasswordFormInputChange] = useForm(passwordInitialState);
 
   const handlePasswordSubmit = async (e) => {
     e.preventDefault();
 
-    // const option = { headers: getAuthHeaders() }
+    if ( passwordForm.newPassword !== passwordForm.newPasswordConfirmation) {
+      alert("Las contraseñas no son iguales")
+    } else if (passwordForm.newPassword === "") {
+      alert("introduce una nueva contraseña")
+    } else if (passwordForm.newPasswordConfirmation === "") {
+      alert("Por favor, confirma tu contraseña")
+    } else {
 
-    // axios.post(, , option).then(res => {
-    //     history.push('/'+loginUser.username);
-    // })
+      const options = {
+        method: "PUT",
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${getToken()}`,
+        },
+
+        body: JSON.stringify(passwordForm),
+      }
+
+      const response = await fetch(
+        USER_URL + `${loginUser.username}/updatePassword`,
+        options
+      );
+      const data = await response.json();
+
+      if (response.status === 200) {
+        console.log(data);
+      } else if (response.status === 400) {
+        alert("Error");
+      }
+
+    }
+
   };
 
   return (
@@ -273,14 +300,14 @@ export default function UserProfileEdit() {
         <h2>Cambia tu contraseña:</h2>
         <form onSubmit={handlePasswordSubmit} className="formHandler ">
           <input
-            onChange={handleEmailFormInputChange}
+            onChange={handlePasswordFormInputChange}
             name="newPassword"
             type="password"
             className="textInput"
             placeholder="Nueva contraseña"
           />
           <input
-            onChange={handleEmailFormInputChange}
+            onChange={handlePasswordFormInputChange}
             name="newPasswordConfirmation"
             type="password"
             className="textInput"
@@ -292,9 +319,9 @@ export default function UserProfileEdit() {
 
       <div className="formInfo backgroundHandler">
         <h2>¿Borrar tu cuenta?</h2>
-        <form className="formHandler ">
+        <div className="formHandler ">
           <DeleteUser />
-        </form>
+        </div>
       </div>
     </div>
   );

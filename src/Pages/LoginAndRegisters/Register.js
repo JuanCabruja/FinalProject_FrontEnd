@@ -31,8 +31,7 @@ export default function Register() {
         
         if (response.status === 201) {
             // signIn(data.token, data.user);
-
-            //TODO: Aquí tengo que establecer un código de LogIn 
+            
             history.push("/login");
             alert("¡Usuario creado! Pruébalo haciendo Login");
     
