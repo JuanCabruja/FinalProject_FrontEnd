@@ -3,7 +3,8 @@ import { useAuthContext } from "../../contexts/AuthContext";
 import {useHistory} from "react-router-dom";
 import { LOGIN_URL } from "../../config/config";
 
-// TODO: Gestionar para el lunes la implementación de esto. 
+// TODO: Por el momento esta funcionalidad no está implementada
+
 import './Login.css';
  
 export default function PasswordForgotten() {
@@ -38,8 +39,7 @@ export default function PasswordForgotten() {
             alert("Credenciales incorrectas")
         }
     };
-    
-    // TODO: Una vez hecho el recovery de la contraseña, habrá que dar un mensaje de succes
+
 
     return (
         <div className="logInSectionContainer">

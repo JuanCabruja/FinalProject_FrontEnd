@@ -1,15 +1,12 @@
 import { useForm } from "../../Hooks/useForm";
-import { useAuthContext } from "../../contexts/AuthContext"; 
+// import { useAuthContext } from "../../contexts/AuthContext"; 
 import {useHistory} from "react-router-dom";
 import { USER_URL } from "../../config/config";
 
 import './Login.css';
+import './Register.css';
 
-//TODO: Arreglar el css GRID del register para que salga bien
- 
 export default function Register() {
-
-    const {signIn, loginUser} = useAuthContext();
 
     const history = useHistory();
  
@@ -28,7 +25,7 @@ export default function Register() {
 
         const response = await fetch(USER_URL, options);
         const data = await response.json();
-        
+        console.log(data);
         if (response.status === 201) {
             // signIn(data.token, data.user);
             
@@ -36,7 +33,6 @@ export default function Register() {
             alert("¡Usuario creado! Pruébalo haciendo Login");
     
         } else {
-            // TODO: recuerda que te dejaste aquí esta frase y tendrás que hacer fetch al error.
             alert("¡Aquí debería estar mostrando el error!")
         }
     };
@@ -50,13 +46,13 @@ export default function Register() {
             <div className="logInSideRightContainer">
                 <div className="logInFormHandler">
                     <h1 className="h1Style">Let's make a new account:</h1>
-                    <form onSubmit={handleSubmit} className="logInFormContainer ">
-                        <span className="formText">*Email:</span>
-                        <input onChange={handleChange} name="email" type="email" className="logInFormStyleEmail" placeholder="Introduce your email" />
-                        <span className="formText">*Your name:</span>
-                        <input onChange={handleChange} name="username" type="text" className="logInFormStylePassword" placeholder="Introduce your name" />
-                        <span className="formText">*Password:</span>
-                        <input onChange={handleChange} name="password" type="password" className="logInFormStylePassword" placeholder="**********" />
+                    <form onSubmit={handleSubmit} className="registerFormContainer ">
+                        <span className="registerFormText">*Email:</span>
+                        <input onChange={handleChange} name="email" type="email" className="logInFormStyleEmail formPadder" placeholder="Introduce your email" />
+                        <span className="registerFormText">*Your name:</span>
+                        <input onChange={handleChange} name="username" type="text" className="logInFormStylePassword formPadder" placeholder="Introduce your name" />
+                        <span className="registerFormText">*Password:</span>
+                        <input onChange={handleChange} name="password" type="password" className="logInFormStylePassword formPadder" placeholder="**********" />
                         <input onChange={handleChange} type="submit" value="Create new account" className="logInBtn" />                    
                     </form>
                     <div className="otherLogInActions">

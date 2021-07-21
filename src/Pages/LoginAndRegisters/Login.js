@@ -14,7 +14,6 @@ export default function Login() {
     const formInitialState = {email: "", password:""};
     const [form, handleChange] = useForm(formInitialState);
     
-    //TODO: ¿Podría gestionar con esto la redirección de la modificación del formulario? 
     
     const handleSubmit = async e => {
         

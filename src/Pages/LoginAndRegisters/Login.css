@@ -67,10 +67,7 @@
 [class^="logInFormStyle"] {
     border-radius: 5px;
     height: 30px; 
-    /* width: 300px; */ 
     border: none;
-
-
     grid-column-start: 1;
     grid-column-end: -1;
 

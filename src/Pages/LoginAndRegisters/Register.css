@@ -1,0 +1,15 @@
+.registerFormContainer {
+    display: flex;
+    flex-direction: column;
+    width: 70%
+}
+
+.registerFormText {
+    color: white;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.formPadder {
+    margin-bottom: 5px;
+}

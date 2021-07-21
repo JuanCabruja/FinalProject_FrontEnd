@@ -85,7 +85,6 @@ export default function NavBar() {
                 onClose={handleClose}
               >
                 <MenuItem onClick={handleClose}>
-                  {" "}
                   <NavLink
                     to={"/" + loginUser?.username}
                     className="marker"
@@ -105,10 +104,9 @@ export default function NavBar() {
                       New Collection
                     </NavLink>
                   </MenuItem>
-                ) : (
-                  <></>
-                )}
+                ) : []}
                 <MenuItem onClick={(handleClose, handleSignOut)}>Logout</MenuItem>
+
               </Menu>
             </div>
           ) : (

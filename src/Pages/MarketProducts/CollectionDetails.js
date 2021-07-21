@@ -12,8 +12,7 @@ import "./CollectionDetails.css";
 
 export default function CollectionDetails() {
 
-  // TODO: TENGO QUE VER EL TEMA DE QUE HACER CON LAS IMÁGENES HORIZONTALES.  
-  // Y hacer el front de esta página
+  // TODO: Diseño por gestionar
 
   // Importación de Parámetros
   let { collectionId } = useParams();

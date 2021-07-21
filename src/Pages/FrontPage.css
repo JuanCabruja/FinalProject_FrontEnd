@@ -101,7 +101,6 @@
 
 /* Media Queries */
 
-/* TODO: Establecer las medias para los distintos tamaños, está arreglado el posicionamiento con el flex-direction */
 
 @media (min-width: 768px) {
     .frontContentExpositor {

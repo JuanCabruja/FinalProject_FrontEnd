@@ -9,7 +9,7 @@ import "./UserProfileEdit.css";
 import { useHistory } from "react-router";
 
 export default function UserProfileEdit() {
-  const { isAuthenticated, loginUser, getAuthHeaders, getToken } =
+  const { loginUser, getAuthHeaders, getToken } =
     useAuthContext();
     const history = useHistory();
 
@@ -45,7 +45,8 @@ export default function UserProfileEdit() {
   };
 
   // User username & description update
-  //TODO: Este algoritmo no se está gestionando correctamente. 
+
+  // TODO: Tengo que gestionar el update del usuario porque falta agregar la actualización de LoginUser
   const userFormInitialState = {
     username: loginUser.username,
     newUsername: loginUser.username,

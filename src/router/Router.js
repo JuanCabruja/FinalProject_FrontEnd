@@ -38,7 +38,7 @@ export default function Router() {
             <Route path='/passwordForgotten'component={passwordForgotten} />
             <Route path='/products/:productId' component={ProductDetails} />
             <Route path='/collections/details/:collectionId' component={CollectionDetails} />
-            <PrivateRoute path='/config/:username' component={UserProfileEdit} />
+            <PrivateRoute path='/config/:username' > <UserProfileEdit /></PrivateRoute>
             <PrivateRoute path='/:username/upload'><CollectionUpload /></PrivateRoute>
             <Route path='/:username'><UserProfile /></Route>       
             <Route component={Error} /> 

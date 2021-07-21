@@ -10,18 +10,15 @@ import { faUserEdit } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router";
 import ProfileUserItem from "../../Components/ProfileUserItem";
 
-//TODO: No tengo establecida una Dummy Pic eso me falta.
 
 function UserProfile() {
   const { isAuthenticated, loginUser } = useAuthContext();
 
   const history = useHistory();
 
-  //TODO: Tengo que implementar un avatar Dummy
-
   // Fetch sobre información para la página de usuario.
   let { username } = useParams();
-  const [user, setUser] = useState({});
+  // const [user, setUser] = useState({});
   const [pageUser, setPageUser] = useState({});
   const [userProducts, setUserProducts] = useState([]);
 
@@ -52,6 +49,7 @@ function UserProfile() {
   useEffect(() => {
     mainVisit();
     return () => {};
+       // eslint-disable-next-line
   }, []);
 
   const Style = {

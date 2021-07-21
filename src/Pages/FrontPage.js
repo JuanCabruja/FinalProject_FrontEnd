@@ -12,7 +12,9 @@ export default function FrontPage() {
   const [creators, setCreators] = useState([]);
   const [collections, setCollections] = useState([]);
 
-  const getAssets = async () => {
+  const getAssets = async (isMounted) => {
+
+    if (isMounted) {
     const response = await fetch(USER_URL + "creators");
     const creators = await response.json();
     setCreators(creators.results);
@@ -20,14 +22,17 @@ export default function FrontPage() {
     const res = await fetch(COLLECTION_URL);
     const collections = await res.json();
     setCollections(collections.collection);
+  }
   };
   
   
 
 
   useEffect(() => {
-   getAssets();
+    let isMounted = true;
+   getAssets(isMounted);
     return () => {};
+    // eslint-disable-next-line
   }, []);
 
   return (

@@ -2,9 +2,6 @@ import React from "react";
 import './ProfileItem.css'
 
 export default function ProfileUserItem({ item }) {
-
-    //TODO: En esta área irá toda la gestión del desengranaje de los items Producto, que luego me será útil en términos generales para la plataforma. 
-    // Separación de las Imágenes
     
     const images = []
     item.parentCollection.images.forEach(image => (images.push(image)))

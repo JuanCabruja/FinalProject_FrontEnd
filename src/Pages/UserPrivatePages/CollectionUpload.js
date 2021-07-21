@@ -70,15 +70,13 @@ export default function CollectionUpload() {
     function onChange(value) {
         setSendCategories(value)
       }
-    
-    console.log("soy sendCategories: ",sendCategories);
+
     useEffect(() => {
         getCategories()
         return () => {
         }
     }, [])
 
-    console.log(categories);
     
     return (
         
