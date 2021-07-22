@@ -14,6 +14,11 @@ export default function Login() {
     const formInitialState = {email: "", password:""};
     const [form, handleChange] = useForm(formInitialState);
     
+    const setUser = async (data) => {
+
+        await signIn(data.token, data.user);
+        history.push("/"+data.user.username);
+    }
     
     const handleSubmit = async e => {
         
@@ -27,11 +32,9 @@ export default function Login() {
 
         const response = await fetch(LOGIN_URL, options); 
         const data = await response.json();
-        
         if (response.status === 200) {
             
-            signIn(data.token, data.user);
-            history.push("/"+data.user.username);
+         setUser(data)
 
         } else {
             alert("Credenciales incorrectas")
@@ -39,6 +42,8 @@ export default function Login() {
 
 
     };
+
+
  
     return (
         <div className="logInSectionContainer">
@@ -55,8 +60,8 @@ export default function Login() {
                     </form>
 
                     <div className="otherLogInActions">
-                    <NavLink to="/passwordForgotten" className="subFormLink" activeClassName="register">Forgotten password?</NavLink>
-                    <NavLink to="/registration" className="subFormLink" activeClassName="register">Register</NavLink>
+                    <NavLink to="/passwordForgotten" className="subFormLink" activeClassName="register">Olvidaste tu contraseña?</NavLink>
+                    <NavLink to="/registration" className="subFormLink" activeClassName="register">Registrarse</NavLink>
                     </div>
 
                 </div>

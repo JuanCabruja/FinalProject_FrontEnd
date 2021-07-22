@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import { useAuthContext } from "../contexts/AuthContext";
 import { Button, Menu, MenuItem } from "@material-ui/core";
@@ -32,6 +32,17 @@ export default function NavBar() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const handleCloseAndSignOut = () => {
+    setAnchorEl(null);
+    handleSignOut();
+  }
+
+  useEffect(() => {
+    // setAnchorEl(null)
+    return () => {
+    }
+}, [])
 
   const [query, HandleInputchange] = useNavForm()
 
@@ -84,28 +95,29 @@ export default function NavBar() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>
+                <MenuItem onClick={(handleClose)}>
                   <NavLink
-                    to={"/" + loginUser?.username}
+                    to={"/" + loginUser.username}
                     className="marker"
                     activeClassName="active"
                   >
-                    My Profile
+                    Mi Perfil
                   </NavLink>
                 </MenuItem>
                 <MenuItem onClick={handleClose}>
                   <NavLink to={"/config/" + loginUser.username}>
-                    My Account
+                    Mi cuenta
                   </NavLink>
                 </MenuItem>
                 {isAuthenticated && isCreator() ? (
                   <MenuItem onClick={handleClose}>
                     <NavLink to={"/" + loginUser?.username + "/upload"}>
-                      New Collection
+                      Nueva Colección
                     </NavLink>
                   </MenuItem>
                 ) : []}
-                <MenuItem onClick={(handleClose, handleSignOut)}>Logout</MenuItem>
+                {/* eslint-disable-next-line  */}
+                <MenuItem onClick={handleCloseAndSignOut}>Logout</MenuItem>
 
               </Menu>
             </div>

@@ -45,13 +45,13 @@ export default function Register() {
             </div>
             <div className="logInSideRightContainer">
                 <div className="logInFormHandler">
-                    <h1 className="h1Style">Let's make a new account:</h1>
+                    <h1 className="h1Style">Creemos una nueva cuenta:</h1>
                     <form onSubmit={handleSubmit} className="registerFormContainer ">
-                        <span className="registerFormText">*Email:</span>
+                        <span className="registerFormText">* Email:</span>
                         <input onChange={handleChange} name="email" type="email" className="logInFormStyleEmail formPadder" placeholder="Introduce your email" />
-                        <span className="registerFormText">*Your name:</span>
+                        <span className="registerFormText">* Nombre:</span>
                         <input onChange={handleChange} name="username" type="text" className="logInFormStylePassword formPadder" placeholder="Introduce your name" />
-                        <span className="registerFormText">*Password:</span>
+                        <span className="registerFormText">* Contraseña:</span>
                         <input onChange={handleChange} name="password" type="password" className="logInFormStylePassword formPadder" placeholder="**********" />
                         <input onChange={handleChange} type="submit" value="Create new account" className="logInBtn" />                    
                     </form>
